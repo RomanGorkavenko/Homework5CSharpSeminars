@@ -6,15 +6,12 @@ int count = 0;
 for (int i = 0; i < n; i++)
 {
     nums[i] = rnd.Next(99, 1000);
-}
-
-for (int i = 0; i < n; i++)
-{
     if (nums[i] % 2 == 0)
     {
         count += 1;
     } 
 }
+
 PrintArray(nums);
 Console.WriteLine($" -> колличество четных чисел в массеве равно: {count}");
 
