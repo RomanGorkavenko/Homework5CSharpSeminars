@@ -1,30 +1,42 @@
-﻿var rnd = new Random();
-int[] nums = new int [7];
-int n = nums.Length;
-int count = 0;
+﻿int[] numbers = new int [7];
+int n = numbers.Length;
 
-for (int i = 0; i < n; i++)
+FillArray(numbers);
+OutputArrayString(numbers);
+CounterEvenNumber(numbers);
+
+void FillArray(int[] array)
 {
-    nums[i] = rnd.Next(99, 1000);
-    if (nums[i] % 2 == 0)
+    Random rnd = new Random();
+    for (int i = 0; i < n; i++)
     {
-        count += 1;
-    } 
+        array[i] = rnd.Next(100, 1000);
+    }
 }
 
-PrintArray(nums);
-Console.WriteLine($" -> колличество четных чисел в массеве равно: {count}");
-
-void PrintArray(int[] arr)
+void CounterEvenNumber(int[] number)
 {
-    string str = "[";
-
-    for (int i = 0; i < arr.Length; i++)
+    int count = 0;
+    for (int i = 0; i < n; i++)
     {
-        str += $", {arr[i]}";
+        if (number[i] % 2 == 0)
+        {
+            count += 1;
+        }
     }
+    Console.WriteLine($" -> колличество четных чисел в массиве равно: {count}");
+}
 
-    str = str.Remove(1, 2);
-    str += "]";
-    Console.Write($"Массив: {str}");
+void OutputArrayString(int[] arrayString)
+{
+    string stringArray = "[";
+
+    for (int i = 0; i < arrayString.Length; i++)
+    {
+        stringArray += $"{arrayString[i]}, ";
+    }
+    int n = stringArray.Length;
+    stringArray = stringArray.Remove(n - 2, 2);
+    stringArray += "]";
+    Console.Write($"Массив: {stringArray}");
 }
