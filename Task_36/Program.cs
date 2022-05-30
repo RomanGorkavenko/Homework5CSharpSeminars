@@ -1,30 +1,43 @@
-﻿var rnd = new Random();
-int[] nums = new int [4];
-int n = nums.Length;
-int sum = 0;
+﻿int[] numbers = new int [4];
+int n = numbers.Length;
 
-for (int i = 0; i < n; i++)
+FillArray(numbers);
+OutputArrayString(numbers);
+SumStandingElementsOddPositions(numbers);
+
+void FillArray(int[] array)
 {
-    nums[i] = rnd.Next(-50, 50);
-    if (i % 2 != 0)
+    Random rnd = new Random();
+    for (int i = 0; i < n; i++)
     {
-        sum += nums[i];
-    } 
+        array[i] = rnd.Next(-50, 50);
+    }
 }
 
-PrintArray(nums);
-Console.WriteLine($" -> сумма чисел стоящих на нечётных позициях в массеве равна: {sum}");
-
-void PrintArray(int[] arr)
+void OutputArrayString(int[] arrayString)
 {
-    string str = "[";
+    string stringArray = "[";
 
-    for (int i = 0; i < arr.Length; i++)
+    for (int i = 0; i < arrayString.Length; i++)
     {
-        str += $", {arr[i]}";
+        stringArray += $"{arrayString[i]}, ";
     }
+    int n = stringArray.Length;
+    stringArray = stringArray.Remove(n - 2, 2);
+    stringArray += "]";
+    Console.Write($"Массив: {stringArray}");
+}
 
-    str = str.Remove(1, 2);
-    str += "]";
-    Console.Write($"Массив: {str}");
+void SumStandingElementsOddPositions(int[] number)
+{
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 != 0)
+        {
+            sum += number[i];
+        }
+    }
+    Console.WriteLine($" -> сумма чисел стоящих на нечётных позициях " +
+                      $"в массиве равна: {sum}");
 }
